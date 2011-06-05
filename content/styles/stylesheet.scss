@@ -12,11 +12,12 @@ $contents_width: 230px;
 body {
   font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
   font-size: 13px;
-  margin: 0px 20px;
+  margin: 0px 40px;
+  overflow-y: scroll;
 }
 
 p, li {
-  line-height: 18px;
+  line-height: 20px;
 }
 
 h1 {
@@ -58,5 +59,22 @@ p code {
 
   > #main {
     margin-left: $contents_width + 15;
+
+    table, table td, table th {
+      border-collapse: collapse;
+      border: 1px solid $blizzard_border;
+    }
+
+    table td, table th {
+      padding: 5px 15px;
+    }
+
+    table th {
+      background-color: lighten($blizzard_border, 70%);
+    }
+
+    table tbody tr:nth-child(2n) {
+      background-color: lighten($blizzard_border, 70%);
+    }
   }
 }

@@ -32,4 +32,15 @@ Multiple realms can also be specified:
 [http://us.battle.net/api/wow/realm/status?realm=Medivh&realm=Blackrock](http://us.battle.net/api/wow/realm/status?realm=Medivh&realm=Blackrock)
 [/BLIZZQUOTE]
 
-*Under construction, more coming soon!*
+The list of realms is presented as an array of objects. Each object has the following properties:
+
+|---
+| Property | Data Type | Description
+|:-|:-|:-
+| name | string | the fully formatted name of the realm, e.g. "Blade's Edge"
+| slug | string | "data friendly" version of name, with punctuation removed and spaces converted to dashes, e.g. "blades-edge"
+| type | string | the type of the realm, will be one of "pve", "pvp", "rp", "rppvp"
+| status | boolean | `true` if the realm is up, `false` if it is down
+| queue | boolean | `true` if the realm has a queue to play, `false` if it does not
+| population | string | the realm's population, one of "low", "medium", "high", or will be "n/a" if the realm is down
+|===

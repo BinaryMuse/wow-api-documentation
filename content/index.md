@@ -3,17 +3,17 @@ Blizzard Community Platform API Documentation
 
 The [Blizzard Community Platform API](http://us.battle.net/wow/en/forum/2626217/) exposes data already served by the World of Warcraft community site to developers.
 
-The API can be accessed through the base URI `/api/wow` for each region using the HTTP protocol. The default payload is JSON, and JSONP callbacks can be specified using the `jsonp` query string parameter. The Web and Mobile Team plans on supporting [Protocol Buffers](http://code.google.com/apis/protocolbuffers/docs/overview.html) at a future date.[^protocol-buffer-support]
+The API can be accessed through the base URI `/api/wow` for each region using the HTTP protocol. The default payload is JSON, and JSONP callbacks can be specified using the `jsonp` query string parameter. The Web and Mobile Team [plans on supporting Protocol Buffers at a future date](http://us.battle.net/wow/en/forum/topic/2593004215#2).
 
 Authentication and Registration
 -------------------------------
 
-Although not yet implemented, the Community Platform API will use a voluntary registration model, which will allow those who register and then authenticate their registration in API calls to make more requests than anonymous users of the API. Anonymous access to the API will still be allowed.[^registration]
+Although not yet implemented, the Community Platform API will use a [voluntary registration model](http://us.battle.net/wow/en/forum/topic/2369881359), which will allow those who register and then authenticate their registration in API calls to make more requests than anonymous users of the API. Anonymous access to the API will still be allowed.
 
 URL Buildup
 -----------
 
-A tpyical URL for use with the API looks like this:[^url-buildup]
+A tpyical URL for use with the API looks like this:
 
     http://{region}.battle.net/api/wow/realm/status?realm={realm_name}
            |_________________| |_____| |__________| |________________|
@@ -75,14 +75,4 @@ If you wish to access the data via JSONP, pass a callback via the `jsonp` query 
       ]
     });
 
-Currently, the data is pretty-printed, but this will likely be removed once the APIs are finalized.[^json-pretty-print] You can also set your `Accept-Encoding` header to `gzip` to get gzipped content.
-
----
-
-[^url-buildup]: Blabbermouth, [Comunity Platform API Feedback](http://us.battle.net/wow/en/forum/topic/2592851202#1) on the Community Platform API Forums
-
-[^registration]: Straton, [Authentication and Registration Overview](http://us.battle.net/wow/en/forum/topic/2369881359) on the Community Platform API Forums
-
-[^protocol-buffer-support]: Straton, [Web Services plans](http://us.battle.net/wow/en/forum/topic/2593004215#2) on the Community Platform API Forums
-
-[^json-pretty-print]: Straton, [[RFC] collapsable white space characters](http://us.battle.net/wow/en/forum/topic/2548997698#7) on the Community Platform API Forums
+Currently, the data is pretty-printed, but this will [likely be removed once the APIs are finalized](http://us.battle.net/wow/en/forum/topic/2548997698#7). You can also set your `Accept-Encoding` header to `gzip` to get gzipped content.
