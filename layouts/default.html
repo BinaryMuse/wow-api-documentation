@@ -13,8 +13,20 @@
     </script>
   </head>
   <body>
-    <div id="main">
-      <%= yield %>
-    </div>
+    <div id="container">
+      <div id="contents">
+        <h1>Contents</h1>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li>APIs</li>
+          <ul>
+            <li><a href="/api/realm.html">Realm Status</a></li>
+          </ul>
+          <li><a href="/playground.html">API Playground</a></li>
+        </ul>
+      </div>
+      <div id="main">
+        <%= yield %>
+      </div>
   </body>
 </html>

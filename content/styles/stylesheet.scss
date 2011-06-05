@@ -7,9 +7,12 @@
 @import "colors.scss";
 @import "blizzquote.scss";
 
+$contents_width: 230px;
+
 body {
   font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
   font-size: 13px;
+  margin: 0px 20px;
 }
 
 p, li {
@@ -38,4 +41,22 @@ p code {
 #response {
   border: 1px solid $blizzard_border;
   min-height: 100px;
+}
+
+#container {
+  float: left;
+  width: 100%;
+
+  > #contents {
+    width: 230px;
+    float: left;
+
+    ul {
+      padding-left: 20px;
+    }
+  }
+
+  > #main {
+    margin-left: $contents_width + 15;
+  }
 }

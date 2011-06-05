@@ -3,15 +3,10 @@
 # Compilation Rules
 # =================
 
-# Index is a frameset in HTML, so we use a blank layout with no filtering.
-compile '/' do
-  layout 'blank'
-end
-
 # The table of contents uses a special layout.
 compile '/contents/' do
   filter :kramdown
-  layout 'contents'
+  layout 'blank'
 end
 
 compile '/styles/stylesheet/' do
