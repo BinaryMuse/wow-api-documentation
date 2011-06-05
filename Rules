@@ -1,0 +1,68 @@
+#!/usr/bin/env ruby
+
+# Compilation Rules
+# =================
+
+# Index is a frameset in HTML, so we use a blank layout with no filtering.
+compile '/' do
+  layout 'blank'
+end
+
+# The table of contents uses a special layout.
+compile '/contents/' do
+  filter :kramdown
+  layout 'contents'
+end
+
+compile '/styles/stylesheet/' do
+  filter :sass, :syntax => :scss
+end
+
+compile '/styles/*/' do
+  # Do not filter our output the support files.
+end
+
+compile '/js/*/' do
+  # Do not filter or layout JS files
+end
+
+compile '/images/*/' do
+  # don’t filter or layout
+end
+
+compile '*' do
+  filter :erb
+  filter :kramdown
+  filter :blizzquote
+  layout 'default'
+end
+
+# Routing Rules
+# =============
+
+route '/' do
+  '/index.html'
+end
+
+
+route '/styles/stylesheet/' do
+  '/styles/stylesheet.css'
+end
+
+route '/styles/*/' do
+  nil # Do not filter our output the support files.
+end
+
+route '/js/*/' do
+  item.identifier.chop + "." + item[:extension]
+end
+
+route '/images/*/' do
+  item.identifier.chop + "." + item[:extension]
+end
+
+route '*' do
+  item.identifier.chop + '.html'
+end
+
+layout '*', :erb

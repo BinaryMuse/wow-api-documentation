@@ -1,0 +1,41 @@
+@mixin rounded($radius: 0.5em) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@import "colors.scss";
+@import "blizzquote.scss";
+
+body {
+  font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
+  font-size: 13px;
+}
+
+p, li {
+  line-height: 18px;
+}
+
+h1 {
+  border-bottom: 2px solid $blizzard_border;
+}
+
+h2 {
+  border-bottom: 1px solid $blizzard_border;
+}
+
+pre {
+  background-color: $code_color;
+  padding: 5px;
+  @include rounded(5px);
+}
+
+p code {
+  background-color: $code_color;
+  padding: 0 3px;
+}
+
+#response {
+  border: 1px solid $blizzard_border;
+  min-height: 100px;
+}

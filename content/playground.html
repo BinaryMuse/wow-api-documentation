@@ -1,0 +1,67 @@
+<h1>API Playground</h1>
+
+<form id="playground">
+  <p>
+    Choose an API:
+    <select id="api_presets">
+      <option value="" style="font-decoration: italic">Choose an API</option>
+      <option value="realm">Realm Status</option>
+    </select>
+  </p>
+  <p>
+    <strong>and/or</strong>
+  </p>
+  <p>
+    Customize your own API call:<br>
+    http://<input type="text" id="region" name="region" size="2">.battle.net/api/wow/<input type="text" id="api" name="api" size="20">?<input type="text" id="params" name="params" size="30">
+  </p>
+  <p>
+    <input type="submit">
+  </p>
+</form>
+
+<p><strong>Note:</strong> You may <em>not</em> add a <code>jsonp</code> parameter to the request URL, as it is already used by this page. Adding a <code>jsonp</code> parameter will cause the tool to fail to work.</p>
+
+<h2>Response</h2>
+
+<pre id="response">No API call made...</pre>
+
+<script>
+  var api_presets = {
+    "realm": {
+      "region": "us",
+      "api": "realm/status",
+      "params": ""
+    }
+  };
+
+  $(function() {
+    $("#playground #api_presets").change(function() {
+      var api = $(this).val();
+      var data = api_presets[api];
+
+      $("#playground #region").val(data["region"]);
+      $("#playground #api").val(data["api"]);
+      $("#playground #params").val(data["params"]);
+    });
+
+    $("#playground").submit(function() {
+      var region = $("#region").val();
+      var api    = $("#api").val();
+      var params = $("#params").val();
+      if(params.length > 0) {
+        params += "&jsonp=?"
+      } else {
+        params = "jsonp=?"
+      }
+
+      var url = "http://" + region + ".battle.net/api/wow/" + api + "?" + params;
+
+      $.getJSON(url, function(data) {
+        $("#response").html(JSON.stringify(data, null, "  "));
+      });
+
+      return false;
+    });
+  });
+</script>

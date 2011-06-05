@@ -1,0 +1,32 @@
+.blizzquote {
+  @include rounded(10px);
+  background-color: $blizzard_bg;
+  color: $blizzard_blue;
+  padding: 8px;
+
+  .author {
+    background-image: url('/images/blizz_ico.gif');
+    background-repeat: no-repeat;
+    padding: {
+      left: 35px;
+      top: 5px;
+      bottom: 5px;
+    }
+  }
+
+  .content {
+    border-top: 1px solid $blizzard_border;
+    padding-top: 5px;
+
+    p {
+      margin: {
+        top: 5px;
+        bottom: 10px;
+      }
+    }
+  }
+
+  a {
+    color: white;
+  }
+}
