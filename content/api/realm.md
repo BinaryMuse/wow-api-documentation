@@ -1,6 +1,3 @@
----
-title: Realm Status API
----
 Realm Status API
 ================
 

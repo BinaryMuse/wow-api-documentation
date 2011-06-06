@@ -26,6 +26,7 @@ compile '/images/*/' do
 end
 
 compile '*' do
+  filter :title
   filter :erb
   filter :toc
   filter :kramdown, :toc_levels => "2..6"
