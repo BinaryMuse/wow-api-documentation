@@ -4,6 +4,8 @@ title: Realm Status API
 Realm Status API
 ================
 
+    {region}.battle.net/api/wow/realm/status
+
 The Realm Status API returns data about the status of one or more realms in a region.
 
 Introduction
@@ -32,7 +34,10 @@ Multiple realms can also be specified:
 [http://us.battle.net/api/wow/realm/status?realm=Medivh&realm=Blackrock](http://us.battle.net/api/wow/realm/status?realm=Medivh&realm=Blackrock)
 [/BLIZZQUOTE]
 
-The list of realms is presented as an array of objects. Each object has the following properties:
+Response
+--------
+
+The API response for the API is a list of realms with associated data, presented as an array of objects. Each object has the following properties:
 
 |---
 | Property | Data Type | Description
@@ -43,4 +48,39 @@ The list of realms is presented as an array of objects. Each object has the foll
 | status | boolean | `true` if the realm is up, `false` if it is down
 | queue | boolean | `true` if the realm has a queue to play, `false` if it does not
 | population | string | the realm's population, one of "low", "medium", "high", or will be "n/a" if the realm is down
-|===
+|---
+
+Additional Information
+----------------------
+
+### Specifying a Single Realm
+
+When specifying a realm via the `realm` parameter, you can use the realm's name (such as `Nazjatar`) or the realm's slug (such as `aerie-peak` for "Aerie Peak"). If the realm name contains a space, you may encode it with `%20` or `+`, e.g. `Aerie%20Peak` or `Aerie+Peak`.
+
+### Specifying Multiple Realms
+
+If you wish to specify multiple realms, you may do so in one of two ways:
+
+  1. Specify multiple `realm` paramters*, e.g. `?realm=nazjatar&realm=aerie-peak`; or
+  2. Specify a comma-separated list of realms for the `realms` (with an "s") paramter, e.g. `?realms=nazjatar,aerie-peak`
+
+If you use the first method, you may specify each realm either by slug or by name (if the name contains no spaces or special characters, there is no difference). If, however, you use the second method, you must use the realm's slug (`?realms=nazjatar,aerie-peak` will work but `?realms=nazjatar,aerie+peak` and `?realms=nazjatar,aerie%20peak` will not).
+
+\* **Note** that, [according to Straton](http://us.battle.net/wow/en/forum/topic/2592851202#12), support for multiple `realm` parameters will be removed, so it is suggested that you use the `realms` parameter. In the same post, Straton also mentions that not being able to specify realm names with spaces in a `realms` CSV list is also a bug and will be fixed.
+
+### Determining a Realm's Slug
+
+Though Blizzard has not disclosed their realm slugging algorithm, there has been some community discussion in the forums about it, especially starting in [posts 15 and 16 of the "Community Platform API Feedback" thread](http://us.battle.net/wow/en/forum/topic/2592851202#15):
+
+> ...0x439 is a unicode code point representing the character 'й'. You can also represent that character as the sequence 0x0438 0x0306, which is и followed by a combining character to add the accent. There's a defined normalisation process to reach that decomposed state; it's the NFKD process (normalised form, canonical, decomposed). If you apply it, then remove all the combining characters, you wind up with something that seems to match the slug test, at least for European realms.
+>
+> In Python:
+>
+>     >>> s = u'\u0439'
+>     >>> nfkd_form = unicodedata.normalize('NFKD', unicode(s))
+>     >>> s = u"".join([c for c in nfkd_form if not unicodedata.combining(c)])
+>     >>> s
+>     u'\u0438'
+>
+>
+> Not all languages have a unicode normalisation library, though. In practice, the entire EU realm list is slugified by (unicode) lowercasing it, stripping hyphens and single quotes, then replacing é with e, ü with u, й with и, and space with hyphen.
