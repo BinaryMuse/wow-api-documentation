@@ -1,3 +1,9 @@
+---
+title: Home
+---
+1. TOC
+{:toc}
+
 Blizzard Community Platform API Documentation
 =============================================
 
