@@ -50,14 +50,13 @@ The API response for the API is a list of realms with associated data, presented
 | population | string | the realm's population, one of "low", "medium", "high", or will be "n/a" if the realm is down
 |---
 
-Additional Information
-----------------------
-
-### Specifying a Single Realm
+Specifying a Single Realm
+-------------------------
 
 When specifying a realm via the `realm` parameter, you can use the realm's name (such as `Nazjatar`) or the realm's slug (such as `aerie-peak` for "Aerie Peak"). If the realm name contains a space, you may encode it with `%20` or `+`, e.g. `Aerie%20Peak` or `Aerie+Peak`.
 
-### Specifying Multiple Realms
+Specifying Multiple Realms
+--------------------------
 
 If you wish to specify multiple realms, you may do so in one of two ways:
 
@@ -68,7 +67,8 @@ If you use the first method, you may specify each realm either by slug or by nam
 
 \* **Note** that, [according to Straton](http://us.battle.net/wow/en/forum/topic/2592851202#12), support for multiple `realm` parameters will be removed, so it is suggested that you use the `realms` parameter. In the same post, Straton also mentions that not being able to specify realm names with spaces in a `realms` CSV list is also a bug and will be fixed.
 
-### Determining a Realm's Slug
+Determining a Realm's Slug
+--------------------------
 
 Though Blizzard has not disclosed their realm slugging algorithm, there has been some community discussion in the forums about it, especially starting in [posts 15 and 16 of the "Community Platform API Feedback" thread](http://us.battle.net/wow/en/forum/topic/2592851202#15):
 
