@@ -1,9 +1,6 @@
 ---
 title: Realm Status API
 ---
-1. TOC
-{:toc}
-
 Realm Status API
 ================
 

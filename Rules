@@ -27,6 +27,7 @@ end
 
 compile '*' do
   filter :erb
+  filter :toc
   filter :kramdown, :toc_levels => "2..6"
   filter :blizzquote
   layout 'default'
