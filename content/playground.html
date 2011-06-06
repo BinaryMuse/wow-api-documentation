@@ -58,7 +58,7 @@
       var url = "http://" + region + ".battle.net/api/wow/" + api + "?" + params;
 
       $.getJSON(url, function(data) {
-        $("#response").html(JSON.stringify(data, null, "  "));
+        $("#playground_response").html(JSON.stringify(data, null, "  "));
       });
 
       return false;
