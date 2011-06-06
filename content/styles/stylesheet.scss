@@ -35,7 +35,7 @@ pre {
   @include rounded(5px);
 }
 
-p code {
+p code, li code, div code {
   background-color: $code_color;
   padding: 0 3px;
 }
