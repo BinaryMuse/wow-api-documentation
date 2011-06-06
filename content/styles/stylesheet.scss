@@ -38,6 +38,7 @@ pre {
 p code, li code, div code {
   background-color: $code_color;
   padding: 0 3px;
+  display: inline-block;
 }
 
 #playground_response {
