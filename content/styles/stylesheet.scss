@@ -94,14 +94,16 @@ p code {
   background-color: white;
   @include rounded(5px);
   border: 1px solid $blizzard_border;
-  //margin: 0;
   padding: 5px 5px 5px 25px;
+
+  // For children
+  ol {
+    padding-left: 25px;
+  }
 
   li {
     margin: 0;
     padding: 0;
-    //list-style: none;
-    //display: block;
   }
 }
 

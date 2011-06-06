@@ -31,29 +31,14 @@ Multiple realms can also be specified:
 [http://us.battle.net/api/wow/realm/status?realm=Medivh&realm=Blackrock](http://us.battle.net/api/wow/realm/status?realm=Medivh&realm=Blackrock)
 [/BLIZZQUOTE]
 
-Response
---------
+Request
+-------
 
-The API response for the API is a list of realms with associated data, presented as an array of objects. Each object has the following properties:
-
-|---
-| Property | Data Type | Description
-|:-|:-|:-
-| name | string | the fully formatted name of the realm, e.g. "Blade's Edge"
-| slug | string | "data friendly" version of name, with punctuation removed and spaces converted to dashes, e.g. "blades-edge"
-| type | string | the type of the realm, will be one of "pve", "pvp", "rp", "rppvp"
-| status | boolean | `true` if the realm is up, `false` if it is down
-| queue | boolean | `true` if the realm has a queue to play, `false` if it does not
-| population | string | the realm's population, one of "low", "medium", "high", or will be "n/a" if the realm is down
-|---
-
-Specifying a Single Realm
--------------------------
+### Specifying a Single Realm
 
 When specifying a realm via the `realm` parameter, you can use the realm's name (such as `Nazjatar`) or the realm's slug (such as `aerie-peak` for "Aerie Peak"). If the realm name contains a space, you may encode it with `%20` or `+`, e.g. `Aerie%20Peak` or `Aerie+Peak`.
 
-Specifying Multiple Realms
---------------------------
+### Specifying Multiple Realms
 
 If you wish to specify multiple realms, you may do so in one of two ways:
 
@@ -64,8 +49,7 @@ If you use the first method, you may specify each realm either by slug or by nam
 
 \* **Note** that, [according to Straton](http://us.battle.net/wow/en/forum/topic/2592851202#12), support for multiple `realm` parameters will be removed, so it is suggested that you use the `realms` parameter. In the same post, Straton also mentions that not being able to specify realm names with spaces in a `realms` CSV list is also a bug and will be fixed.
 
-Determining a Realm's Slug
---------------------------
+### Determining a Realm's Slug
 
 Though Blizzard has not disclosed their realm slugging algorithm, there has been some community discussion in the forums about it, especially starting in [posts 15 and 16 of the "Community Platform API Feedback" thread](http://us.battle.net/wow/en/forum/topic/2592851202#15):
 
@@ -81,3 +65,19 @@ Though Blizzard has not disclosed their realm slugging algorithm, there has been
 >
 >
 > Not all languages have a unicode normalisation library, though. In practice, the entire EU realm list is slugified by (unicode) lowercasing it, stripping hyphens and single quotes, then replacing é with e, ü with u, й with и, and space with hyphen.
+
+Response
+--------
+
+The API response for the API is a list of realms with associated data, presented as an array of objects. Each object has the following properties:
+
+|---
+| Property | Data Type | Description
+|:-|:-|:-
+| name | string | the fully formatted name of the realm, e.g. "Blade's Edge"
+| slug | string | "data friendly" version of name, with punctuation removed and spaces converted to dashes, e.g. "blades-edge"
+| type | string | the type of the realm, will be one of "pve", "pvp", "rp", "rppvp"
+| status | boolean | `true` if the realm is up, `false` if it is down
+| queue | boolean | `true` if the realm has a queue to play, `false` if it does not
+| population | string | the realm's population, one of "low", "medium", "high", or will be "n/a" if the realm is down
+|---
