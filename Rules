@@ -59,7 +59,7 @@ route '/images/*/' do
 end
 
 route '*' do
-  item.identifier.chop + '.html'
+  item.identifier + 'index.html'
 end
 
 layout '*', :erb
