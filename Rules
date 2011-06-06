@@ -3,12 +3,6 @@
 # Compilation Rules
 # =================
 
-# The table of contents uses a special layout.
-compile '/contents/' do
-  filter :kramdown
-  layout 'blank'
-end
-
 compile '/styles/stylesheet/' do
   filter :sass, :syntax => :scss
 end
