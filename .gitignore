@@ -1,3 +1,5 @@
 output/*
 tmp/*
 .sass-cache/*
+.bundle/*
+bin/*
