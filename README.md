@@ -19,6 +19,11 @@ Each API document should include, at the top, the basic URL structure for the AP
 
 For a good idea about how a document should be laid out, see the `content/api/realm.md` file. However, **if you wish to contribute but aren't sure about the formatting**, go ahead and add what you can, and I will take care of extra formatting or layout when I process the pull request.
 
+Using nanoc
+-----------
+
+The site is built using nanoc. Assuming you are using Bundler to manage your gems, you can install the necessary gems using `bundle install` and start the auto-compiler via `bundle exec rake auto`. This will start a web server on localhost port 3000; visit http://localhost:3000 in a browser to view the site. nanoc will recompile files as you modify them, so simply refresh your browser to see your changes.
+
 The Blizzquote Filter
 ---------------------
 
